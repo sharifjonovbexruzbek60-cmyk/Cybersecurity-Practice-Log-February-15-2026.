@@ -1,0 +1,33 @@
+This repository documents my hands-on experience and security testing workflow conducted on February 15th, using Ubuntu Linux. The focus was on network scanning, brute-forcing, and web vulnerability analysis.
+ Tools & Technologies Used
+OS: Ubuntu Linux
+Network/Web Tools: Nmap, Wireshark, Dirsearch, Gobuster
+Exploitation Tools: Hydra, sqlmap
+Proxy/Interception: Burp Suite Community Edition
+ Activities Performed
+1. Service Brute-Forcing with Hydra
+Target: ://testphp.vulnweb.com
+Goal: Identifying valid credentials for a web login form.
+Execution:
+Analyzed HTTP POST parameters (uname, pass).
+Configured Hydra with a custom wordlist and defined success criteria (S=Logout) to eliminate False Positives.
+Result: Successfully identified valid credentials: test:test.
+2. SQL Injection Analysis with sqlmap
+Focus: Automated vulnerability detection in database-driven web applications.
+Tasks:
+Tested various injection points (URL parameters, User-Agent, and Referer headers).
+Identified Boolean-based blind and Union-based SQL injection vulnerabilities on the cat parameter.
+Explored the database structure (acuart database) and practiced data extraction commands for the users table.
+3. Traffic Interception with Burp Suite
+Workflow:
+Set up a local proxy to intercept real-time HTTP/HTTPS traffic.
+Used the Intercept feature to capture and modify login requests before they reached the server.
+Explored the Intruder module to set payload positions and automate password spraying attacks.
+Used Repeater for manual request manipulation and testing SQL Injection payloads like admin' OR '1'='1.
+4. Directory Brute-Forcing
+Practiced using Gobuster to discover hidden directories and files on the target web server using common wordlists.
+ Key Learnings
+Understanding the importance of Success/Failure string matching in automated tools to prevent False Positives.
+Differentiating between Blind SQL Injection (time-based/boolean-based) and Union-based methods.
+Learning the manual request/response lifecycle by intercepting packets with Burp Suite.
+Disclaimer: All tests were conducted on vulnweb.com, a legal and safe environment specifically designed for security testing and education.
